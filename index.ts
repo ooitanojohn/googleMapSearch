@@ -3,6 +3,7 @@
  * Copyright 2019 Google LLC. All Rights Reserved.
  * SPDX-License-Identifier: Apache-2.0
  */
+
 /** UI */
 import { searchForm } from './mapUi';
 import { myFindPlaceFromQuery } from './search';
@@ -31,9 +32,10 @@ let requestDetail: any = {
     'name',
     'business_status',
     'opening_hours',
+    'utc_offset_minutes',
     'formatted_address',
     'photos',
-    'rating',
+    'website',
   ],
 };
 
@@ -80,7 +82,8 @@ const mapPromiss = initMap().then((map) => {
 searchForm.addEventListener('submit', async (event: any) => {
   event.preventDefault();
   infoWindow.close();
-  request.query = event.path[0][0].value;
+  // request.query = event.path[0][0].value; // ブラウザだと
+  request.query = event.target[0].value; // node実行
   /** 文字から場所を検索 place_idを取得するまで待機*/
   await myFindPlaceFromQuery(service, request, map)
     .then((list) => {
@@ -89,7 +92,6 @@ searchForm.addEventListener('submit', async (event: any) => {
       for (let i = 0; i < placeIdList.length; i++) {
         requestDetail.placeId = placeIdList[i];
         service.getDetails(requestDetail, (place, status) => {
-          if (place) place_id = place.place_id;
           mySearchDetailCb(status, place, map, infoWindow);
         });
       }

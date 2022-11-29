@@ -1,8 +1,6 @@
 /** 詳細情報検索 */
-import { forEachChild } from 'typescript';
 import {addMarker} from './mapUi'
 export const mySearchDetailCb = (status, place, map, infoWindow) => {
-  // console.log(place);
   if (
     status === google.maps.places.PlacesServiceStatus.OK &&
     place &&
@@ -11,8 +9,8 @@ export const mySearchDetailCb = (status, place, map, infoWindow) => {
   ) {
     /** 緯度経度とマーカー */
     const marker = addMarker(place.geometry.location,map);
-    // console.log(place);
-    /** flagment化できそう */
+    console.log(place);
+    /** 詳細情報 */
     google.maps.event.addListener(marker, 'click', () => {
       const content = document.createElement('div');
       /** 地点名 */
@@ -20,10 +18,9 @@ export const mySearchDetailCb = (status, place, map, infoWindow) => {
       nameElement.textContent = place.name!;
       content.appendChild(nameElement);
       /** 営業中か否か */
-      console.log(place.opening_hours)
       const openNowElement = document.createElement('p');
-      let openNowText:string ='';
-      if(place.opening_hours.open_now!){
+      let openNowText: string = '';
+      if(place.opening_hours.isOpen()!){
         openNowText = '営業中';
       }else{
         openNowText = '営業時間外';
@@ -43,6 +40,21 @@ export const mySearchDetailCb = (status, place, map, infoWindow) => {
       const placeAddressElement = document.createElement('p');
       placeAddressElement.textContent = place.formatted_address!;
       content.appendChild(placeAddressElement);
+
+      /** 公式サイトへのリンク */
+      const websiteElement = document.createElement('a');
+      websiteElement.setAttribute("href", place.website!);
+      websiteElement.textContent = place.name!;
+      content.appendChild(websiteElement);
+
+      /** 写真一覧を表示 */
+      const photosElement = document.createElement('ul');
+      place.photos.forEach(ele => {
+        const photoElement = document.createElement('img');
+        photoElement.setAttribute('src',ele.getUrl({maxWidth: 200, maxHeight: 200}));
+        photosElement.appendChild(photoElement);
+      });
+      content.appendChild(photosElement);
 
       infoWindow.setContent(content);
       infoWindow.open(map, marker);
