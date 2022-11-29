@@ -1,3 +1,6 @@
-# googleMapSearch
+# googleMapAPiでgoogleMapを作っていく
+## クライアントのみ(placeライブラリ)
 
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/github-pn7pmj-ukfxld)
+### turboとかwebpack覚えたらサーバ
+
+## APIKEYを取得してindex.htmlに入れたら動く

@@ -1,5 +1,6 @@
 /** 詳細情報検索 */
-export const mySearchDetailCb = (status, place, map, infowindow) => {
+import {addMarker} from './mapUi'
+export const mySearchDetailCb = (status, place, map, infoWindow) => {
   // console.log(place);
   if (
     status === google.maps.places.PlacesServiceStatus.OK &&
@@ -7,10 +8,8 @@ export const mySearchDetailCb = (status, place, map, infowindow) => {
     place.geometry &&
     place.geometry.location
   ) {
-    const marker = new google.maps.Marker({
-      map,
-      position: place.geometry.location,
-    });
+    /** 緯度経度とマーカー */
+    const marker = addMarker(place.geometry.location,map);
 
     /** flagment化できそう */
     google.maps.event.addListener(marker, 'click', () => {
@@ -31,8 +30,8 @@ export const mySearchDetailCb = (status, place, map, infowindow) => {
       placeAddressElement.textContent = place.formatted_address!;
       content.appendChild(placeAddressElement);
 
-      infowindow.setContent(content);
-      infowindow.open(map, marker);
+      infoWindow.setContent(content);
+      infoWindow.open(map, marker);
     });
   }
 };
