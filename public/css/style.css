@@ -10,6 +10,9 @@
 #map {
   height: 100%;
 }
+ul{
+  list-style: none;
+}
 
 /* 
  * Optional: Makes the sample page fill the window. 
