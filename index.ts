@@ -3,39 +3,41 @@
  * Copyright 2019 Google LLC. All Rights Reserved.
  * SPDX-License-Identifier: Apache-2.0
  */
-
+/** 環境 */
+import * as dotenv from "dotenv";
 /** UI */
-import { searchForm } from './mapUi';
-import { myFindPlaceFromQuery } from './search';
-import { mySearchDetailCb } from './searchDetails';
-import { getCurrentPositionPromise } from './geoLocation';
+import { searchForm } from "./lib/components/searchForm";
+/** 関数 */
+import { myFindPlaceFromQuery } from "./lib/search";
+import { mySearchDetailCb } from "./lib/searchDetails";
+import { getCurrentPositionPromise } from "./lib/geoLocation";
 
 /** 初期化と型宣言 */
 let map: google.maps.Map,
   service: google.maps.places.PlacesService,
   infoWindow: google.maps.InfoWindow,
   location: google.maps.LatLngLiteral,
-  place_id: string | undefined = '';
+  place_id: string | undefined = "";
 /** エラー時のmsgInfo */
-let setContentMsg = '';
+let setContentMsg = "";
 /** PlaceFromQuery 検索名から場所を探す*/
 const request = {
-  query: 'YOD Edition',
-  fields: ['name', 'geometry', 'place_id'],
+  query: "YOD Edition",
+  fields: ["name", "geometry", "place_id"],
 };
 /** getDetails placeIdから場所の情報を出す */
 let requestDetail: any = {
   placeId: place_id,
   fields: [
-    'place_id',
-    'geometry',
-    'name',
-    'business_status',
-    'opening_hours',
-    'utc_offset_minutes',
-    'formatted_address',
-    'photos',
-    'website',
+    "place_id",
+    "geometry",
+    "name",
+    "business_status",
+    "opening_hours",
+    "utc_offset_minutes",
+    "formatted_address",
+    "photos",
+    "website",
   ],
 };
 
@@ -52,13 +54,13 @@ const initMap = async () => {
       location = { lat: 34.696959414777986, lng: 135.5052360477183 };
       setContentMsg = error.browserHasGeolocation
         ? `Error: ${error.errMsg}`
-        : 'Error: あなたのブラウザは位置情報サービスがサポートされていません';
+        : "Error: あなたのブラウザは位置情報サービスがサポートされていません";
     });
   /** mapのインスタンス */
-  map = new google.maps.Map(document.getElementById('map') as HTMLElement, {
+  map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
     center: location,
     zoom: 15,
-    gestureHandling: 'cooperative',
+    gestureHandling: "cooperative",
   });
   /** infoWindow インスタンス */
   infoWindow = new google.maps.InfoWindow();
@@ -79,7 +81,7 @@ const mapPromiss = initMap().then((map) => {
 
 /** ここから操作 */
 /** form検索した時 */
-searchForm.addEventListener('submit', async (event: any) => {
+searchForm.addEventListener("submit", async (event: any) => {
   event.preventDefault();
   infoWindow.close();
   // request.query = event.path[0][0].value; // ブラウザだと

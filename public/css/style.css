@@ -3,19 +3,34 @@
  * Copyright 2019 Google LLC. All Rights Reserved.
  * SPDX-License-Identifier: Apache-2.0
  */
-/* 
- * Always set the map height explicitly to define the size of the div element
- * that contains the map. 
- */
+@charset 'utf-8';
+#breadcrumb{
+
+}
 #map {
-  height: 100%;
+  height: calc(100% - 20px);
+  border: 10px solid aliceblue;
+}
+/** ボタンのz-indexどうすれば */
+.gm-style-mtc{
+  /* z-index: 1.5; */
+}
+#nav{
+    position: fixed;
+    height: 50vh;
+    top:50vh;
+    width: 30%;
+    background-color: white;
+    z-index: 1;
+    opacity:0.8;
+
 }
 ul{
   list-style: none;
 }
 
-/* 
- * Optional: Makes the sample page fill the window. 
+/*
+ * Optional: Makes the sample page fill the window.
  */
 html,
 body {
