@@ -2,20 +2,22 @@ import { myCreateElement } from "../mapUi";
 
 /** 写真一覧を表示 */
 /** 写真コンポーネント */
-export const slideshowComponent = (place, content) => {
+export const createSlideShowComponent = (place) => {
+  /** 一番外 */
+  const components = myCreateElement("div", "", "", {
+    "uk-slideshow": "animation: pull min-height: 300; max-height: 600",
+  });
+  /** 2番目のdiv */
   const photosComponent = myCreateElement(
     "div",
     "",
     ["uk-position-relative", "uk-visible-toggle", "uk-light"],
     {
       tabindex: "-1",
-      "uk-slideshow": "animation: pull min-height: 300; max-height: 600",
     }
   );
   /** 写真エレメント */
   const photosElement = myCreateElement("ul", "", "uk-slideshow-items");
-  /** 写真ドットエレメント */
-  const photosDotElement = myCreateElement("ul");
   place.photos.forEach((ele) => {
     const photoLiElement = myCreateElement("li");
     const photoImgElement = myCreateElement("img", "", "", {
@@ -24,18 +26,9 @@ export const slideshowComponent = (place, content) => {
     });
     photoLiElement.appendChild(photoImgElement);
     photosElement.appendChild(photoLiElement);
-    /** dot */
-    const photoDotElement = myCreateElement("li", "", "", {
-      "uk-slideshow-item": "0",
-    });
-    const photoADotElement = myCreateElement("a", "", "", { href: "#" });
-    photoDotElement.appendChild(photoADotElement);
-    photosDotElement.appendChild(photoDotElement);
   });
   /** コンポーネントに追加 */
   photosComponent.appendChild(photosElement);
-  /** ドットに追加 */
-  photosComponent.appendChild(photosDotElement);
   const photoPrevElement = myCreateElement(
     "a",
     "",
@@ -58,5 +51,14 @@ export const slideshowComponent = (place, content) => {
   );
   photosComponent.appendChild(photoPrevElement);
   photosComponent.appendChild(photoNextElement);
-  content.appendChild(photosComponent);
+  components.appendChild(photosComponent);
+  /** ドットに追加 */
+  const photosDotElement = myCreateElement("ul", "", [
+    "uk-dotnav",
+    "uk-slideshow-nav",
+    "uk-flex-center",
+    "uk-margin",
+  ]);
+  components.appendChild(photosDotElement);
+  return components;
 };
