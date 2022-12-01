@@ -6,8 +6,8 @@ var mapUi_1 = require("../mapUi");
 /** 写真コンポーネント */
 var createSlideShowComponent = function (place) {
     /** 一番外 */
-    var components = (0, mapUi_1.myCreateElement)("div", "", "", {
-        "uk-slideshow": "animation: pull min-height: 500 max-height: 600"
+    var components = (0, mapUi_1.myCreateElement)("div", "", "uk-card-body", {
+        "uk-slideshow": "animation:pull autoplay:true autoplay-interval:60 pause-on-hover:true"
     });
     /** 2番目のdiv */
     var photosComponent = (0, mapUi_1.myCreateElement)("div", "", ["uk-position-relative", "uk-visible-toggle", "uk-light"], {

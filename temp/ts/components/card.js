@@ -11,15 +11,15 @@ var createCardComponent = function () {
         "uk-grid-collapse",
         "uk-child-width-1-2@s",
     ], { "uk-grid": "" });
+    /** 文章コンポーネント */
+    var text = (0, mapUi_1.myCreateElement)("div", "");
     /** 画像コンポーネント */
     var img = (0, mapUi_1.myCreateElement)("div", "", [
         "uk-card-media-left",
         "uk-cover-container",
     ]);
-    /** 文章コンポーネント */
-    var text = (0, mapUi_1.myCreateElement)("div");
-    cardComponent.appendChild(img);
     cardComponent.appendChild(text);
+    cardComponent.appendChild(img);
     return cardComponent;
 };
 exports.createCardComponent = createCardComponent;

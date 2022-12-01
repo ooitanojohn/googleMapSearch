@@ -4,8 +4,10 @@ import { myCreateElement } from "../mapUi";
 /** 写真コンポーネント */
 export const createSlideShowComponent = (place) => {
   /** 一番外 */
-  const components = myCreateElement("div", "", "", {
-    "uk-slideshow": "animation: pull min-height: 500 max-height: 600",
+
+  const components = myCreateElement("div", "", "uk-card-body", {
+    "uk-slideshow":
+      "animation:pull autoplay:true autoplay-interval:60 pause-on-hover:true",
   });
   /** 2番目のdiv */
   const photosComponent = myCreateElement(

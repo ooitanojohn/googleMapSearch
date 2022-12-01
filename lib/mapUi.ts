@@ -12,7 +12,7 @@ export const myCreateElement = (
   tag: string,
   text: string = "",
   className: string | Array<string> = "",
-  AttributeObj: object = { id: "" }
+  AttributeObj: object | null = null
 ): HTMLElement => {
   const myElement = document.createElement(tag);
   if (text !== "") myElement.textContent = text;
@@ -24,11 +24,14 @@ export const myCreateElement = (
     }
   }
 
-  for (const [key, value] of Object.entries(AttributeObj)) {
-    myElement.setAttribute(key, value);
+  if (AttributeObj !== null) {
+    for (const [key, value] of Object.entries(AttributeObj)) {
+      myElement.setAttribute(key, value);
+    }
   }
   return myElement;
 };
+
 /**
  * marker系
  */

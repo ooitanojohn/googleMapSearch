@@ -14,14 +14,14 @@ export const createCardComponent = () => {
     ],
     { "uk-grid": "" }
   );
+  /** 文章コンポーネント */
+  const text = myCreateElement("div", "");
   /** 画像コンポーネント */
   const img = myCreateElement("div", "", [
     "uk-card-media-left",
     "uk-cover-container",
   ]);
-  /** 文章コンポーネント */
-  const text = myCreateElement("div");
-  cardComponent.appendChild(img);
   cardComponent.appendChild(text);
+  cardComponent.appendChild(img);
   return cardComponent;
 };

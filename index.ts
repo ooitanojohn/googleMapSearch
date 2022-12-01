@@ -3,8 +3,6 @@
  * Copyright 2019 Google LLC. All Rights Reserved.
  * SPDX-License-Identifier: Apache-2.0
  */
-/** 環境 */
-import * as dotenv from "dotenv";
 /** UI */
 import { searchForm } from "./lib/components/searchForm";
 /** 関数 */
@@ -36,8 +34,11 @@ let requestDetail: any = {
     "opening_hours",
     "utc_offset_minutes",
     "formatted_address",
+    "formatted_phone_number",
     "photos",
     "website",
+    "icon",
+    "rating",
   ],
 };
 
