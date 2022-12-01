@@ -6,39 +6,31 @@
 -->
 <html lang="ja">
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>Place Searche</title>
-    <script src=" https://polyfill.io/v3/polyfill.min.js?features=default">
-    </script>
+    <script src=" https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <!-- UIkit CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.15.14/dist/css/uikit.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/uikit@3.15.14/dist/css/uikit.min.css"
+    />
     <link rel="stylesheet" type="text/css" href="./public/css/style.css" />
     <script type="module" src="./index.ts"></script>
   </head>
   <body>
-    <nav id="nav" class="uk-card uk-card-default uk-card-large uk-card-body">
-      <div class="uk-card-badge uk-label">search</div>
-      <ul uk-accordion>
-        <li class="uk-open">
-          <a class="uk-accordion-title" href="#">検索後</a>
-          <div class="uk-accordion-content">
-            <p>レストラン</p>
-          </div>
-          <div class="uk-accordion-content">
-            <p>コンビニ</p>
-          </div>
-          <div class="uk-accordion-content">
-            <p>スーパー</p>
-          </div>
-        </li>
-      </ul>
-    </nav>
     <div id="map"></div>
     <script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCieTqwqXiWW3Phz4LQDzWsUF8wDBfmTlk&callback=initMap&libraries=places&v=weekly"
-      defer></script>
+      defer
+    ></script>
     <!-- UIkit JS -->
-    <script src="https://cdn.jsdelivr.net/npm/uikit@3.15.14/dist/js/uikit.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/uikit@3.15.14/dist/js/uikit-icons.min.js" defer></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/uikit@3.15.14/dist/js/uikit.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/uikit@3.15.14/dist/js/uikit-icons.min.js"
+      defer
+    ></script>
   </body>
 </html>
