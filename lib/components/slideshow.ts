@@ -1,30 +1,29 @@
-import { myCreateElement } from "../mapUi";
+import { myCreateElement } from '../mapUi';
 
 /** 写真一覧を表示 */
 /** 写真コンポーネント */
 export const createSlideShowComponent = (place) => {
   /** 一番外 */
-
-  const components = myCreateElement("div", "", "uk-card-body", {
-    "uk-slideshow":
-      "animation:pull autoplay:true autoplay-interval:60 pause-on-hover:true",
+  const components = myCreateElement('div', '', 'uk-card-body', {
+    'uk-slideshow':
+      'animation:pull autoplay:true autoplay-interval:60 pause-on-hover:true',
   });
   /** 2番目のdiv */
   const photosComponent = myCreateElement(
-    "div",
-    "",
-    ["uk-position-relative", "uk-visible-toggle", "uk-light"],
+    'div',
+    '',
+    ['uk-position-relative', 'uk-visible-toggle', 'uk-light'],
     {
-      tabindex: "-1",
+      tabindex: '-1',
     }
   );
   /** 写真エレメント */
-  const photosElement = myCreateElement("ul", "", "uk-slideshow-items");
+  const photosElement = myCreateElement('ul', '', 'uk-slideshow-items');
   place.photos.forEach((ele) => {
-    const photoLiElement = myCreateElement("li");
-    const photoImgElement = myCreateElement("img", "", "", {
+    const photoLiElement = myCreateElement('li');
+    const photoImgElement = myCreateElement('img', '', '', {
       src: ele.getUrl({ maxWidth: 3000, maxHeight: 3000 }),
-      "uk-cover": "",
+      'uk-cover': '',
     });
     photoLiElement.appendChild(photoImgElement);
     photosElement.appendChild(photoLiElement);
@@ -32,34 +31,34 @@ export const createSlideShowComponent = (place) => {
   /** コンポーネントに追加 */
   photosComponent.appendChild(photosElement);
   const photoPrevElement = myCreateElement(
-    "a",
-    "",
-    ["uk-position-center-left", "uk-position-small", "uk-hidden-hover"],
+    'a',
+    '',
+    ['uk-position-center-left', 'uk-position-small', 'uk-hidden-hover'],
     {
-      href: "#",
-      "uk-slidenav-previous": "",
-      "uk-slideshow-item": "previous",
+      href: '#',
+      'uk-slidenav-previous': '',
+      'uk-slideshow-item': 'previous',
     }
   );
   const photoNextElement = myCreateElement(
-    "a",
-    "",
-    ["uk-position-center-right", "uk-position-small", "uk-hidden-hover"],
+    'a',
+    '',
+    ['uk-position-center-right', 'uk-position-small', 'uk-hidden-hover'],
     {
-      href: "#",
-      "uk-slidenav-next": "",
-      "uk-slideshow-item": "next",
+      href: '#',
+      'uk-slidenav-next': '',
+      'uk-slideshow-item': 'next',
     }
   );
   photosComponent.appendChild(photoPrevElement);
   photosComponent.appendChild(photoNextElement);
   components.appendChild(photosComponent);
   /** ドットに追加 */
-  const photosDotElement = myCreateElement("ul", "", [
-    "uk-dotnav",
-    "uk-slideshow-nav",
-    "uk-flex-center",
-    "uk-margin",
+  const photosDotElement = myCreateElement('ul', '', [
+    'uk-dotnav',
+    'uk-slideshow-nav',
+    'uk-flex-center',
+    'uk-margin',
   ]);
   components.appendChild(photosDotElement);
   return components;
