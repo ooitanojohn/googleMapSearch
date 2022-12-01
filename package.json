@@ -21,6 +21,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build --outDir dist --base './'",
+    "tsc": "tsc lib/*.ts --outDir temp/ts",
     "lint": "eslint \"**/*.js\"",
     "fix": "eslint --fix \"**/*.js\"",
     "fmt": "prettier --w \"**/*.js\" && prettier --parser html --w *.html"

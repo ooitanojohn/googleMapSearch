@@ -5,7 +5,7 @@ import { myCreateElement } from "../mapUi";
 export const createSlideShowComponent = (place) => {
   /** 一番外 */
   const components = myCreateElement("div", "", "", {
-    "uk-slideshow": "animation: pull min-height: 300; max-height: 600",
+    "uk-slideshow": "animation: pull min-height: 500 max-height: 600",
   });
   /** 2番目のdiv */
   const photosComponent = myCreateElement(
